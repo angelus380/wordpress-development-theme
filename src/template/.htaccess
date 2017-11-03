@@ -1,0 +1,16 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# returns a 400 to a not logged in user
+#RewriteCond %{HTTP_COOKIE} !^.*wordpress_logged_in.*$ [NC]
+#RewriteCond %{REQUEST_URI} ^(.*/wp-content/uploads/.+)$ [NC]
+#RewriteRule ^(.*)$ - [R=403,L]
+
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
