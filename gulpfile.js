@@ -6,17 +6,18 @@
 'use strict';
 
 const
+  // theme name
+  theme = 'example-theme/', // change name here
 
   // source and build folders
   wp = {
     src         : 'site/**',
-    build       : '../sites/example.com/', // change site name
-    theme       : 'example-theme/' // theme name
+    build       : '../sites/' + theme,
   },
 
   dir = {
     src         : 'src/',
-    build       : wp.build + 'wp-content/themes/' + wp.theme // change name of the project
+    build       : wp.build + 'wp-content/themes/' + theme
   },
 
   // Gulp and plugins
@@ -141,7 +142,7 @@ var css = {
     require('postcss-assets')({
       loadPaths: ['images/'],
       basePath: dir.build,
-      baseUrl: '../themes/' + wp.theme
+      baseUrl: '../themes/' + theme
     }),
     require('autoprefixer')({
       browsers: ['last 2 versions', '> 2%']
@@ -173,7 +174,7 @@ gulp.task('css', ['images'], () => {
 const js = {
   src         : dir.src + 'js/**/*',
   build       : dir.build + 'js/',
-  filename    : 'scripts.js' // name of your js file
+  filename    : 'scripts.js'
 };
 
 // JavaScript processing
@@ -181,8 +182,8 @@ gulp.task('js', () => {
 
   return gulp.src(js.src)
     .pipe(deporder())
-    .pipe(concat(js.filename)) // compresses all js files in a single one
-    .pipe(stripdebug()) // strips debugging and console logs
+    .pipe(concat(js.filename)) // compress js files
+    // .pipe(stripdebug()) // strips debugging and console logs
     .pipe(uglify())
     .pipe(gulp.dest(js.build))
     .pipe(browsersync ? browsersync.reload({ stream: true }) : gutil.noop());
