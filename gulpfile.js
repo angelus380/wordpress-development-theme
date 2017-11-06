@@ -7,12 +7,12 @@
 
 const
   // theme name
-  theme = 'example-theme/', // change name here
+  theme = 'example.com/', // change name here
 
   // source and build folders
   wp = {
     src         : 'site/**',
-    build       : '../sites/' + theme,
+    build       : '../online/' + theme,
   },
 
   dir = {
