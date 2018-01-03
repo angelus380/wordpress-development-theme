@@ -1,0 +1,66 @@
+
+// BREAKPOINTS
+
+// xs = mobile      : 5 inches
+// sm = tablet      : 8 inches
+// md = half screen : 10 inches
+// lg = laptop      : 12 inches
+// xl = desktop     : above
+
+// FIXED BREAKPOINTS
+@mixin xs-only {
+  @media (max-width: 575.99px) { @content; }
+}
+@mixin sm-only {
+  @media (min-width: 576px) and (max-width: 767.99px) { @content; }
+}
+@mixin md-only {
+  @media (min-width: 768px) and (max-width: 991.99px) { @content; }
+}
+@mixin lg-only {
+  @media (min-width: 992px) and (max-width: 1199.99px) { @content; }
+}
+@mixin xl-only {
+  @media (min-width: 1200px) { @content; }
+}
+
+// BELOW X BREAKPOINTS
+@mixin sm-max {
+  @media (max-width: 767.99px) { @content; }
+}
+@mixin md-max {
+  @media (max-width: 991.99px) { @content; }
+}
+@mixin lg-max {
+  @media (max-width: 1199.99px) { @content; }
+}
+
+// ABOVE X BREAKPOINTS
+@mixin sm {
+  @media (min-width: 576px) { @content; }
+}
+@mixin md {
+  @media (min-width: 768px) { @content; }
+}
+@mixin lg {
+  @media (min-width: 992px) { @content; }
+}
+@mixin xl {
+  @media (min-width: 1200px) { @content; }
+}
+
+// PLACEHOLDER
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}

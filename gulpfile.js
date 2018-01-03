@@ -43,25 +43,11 @@ var browsersync = false;
 
 // htaccess and plugins
 const
-  hidden = {
-    src           : dir.src + 'template/.htaccess',
-    build         : wp.build
-  },
-
   plugins = {
     src           : 'src/plugins/**',
     build         : wp.build + 'wp-content/plugins/'
   }
 ;
-
-// build .htaccess
-gulp.task('hidden', () => {
-  
-  return gulp.src(hidden.src)
-    .pipe(newer(hidden.build))
-    .pipe(gulp.dest(hidden.build));
-
-});
 
 // build plugins
 gulp.task('plugins', () => {
@@ -81,7 +67,7 @@ gulp.task('build-wordpress', () => {
 
 });
 
-gulp.task('wp', ['build-wordpress', 'hidden', 'plugins']);
+gulp.task('wp', ['build-wordpress', 'plugins']);
 
   //--------------//
  // PHP SETTINGS //
